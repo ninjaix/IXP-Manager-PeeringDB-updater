@@ -133,21 +133,25 @@ JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `peeringmacrov6` = `pdb_networks`.`ipv6-as-set`
 WHERE `pdb_networks`.`ipv6-as-set` IS NOT NULL;
+/*  for regulr disstro
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `pdb_networks`.`name` = `pdb_networks`.`name`;
+*/
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `maxprefixes` = `pdb_networks`.`info_prefixes4`
 WHERE `pdb_networks`.`info_prefixes4` IS NOT NULL and `maxprefixes` < `pdb_networks`.`info_prefixes4`;
-UPDATE `ixpmanager`.`cust`
-SET `cust`.`nocemail` =''
-WHERE `cust`.`nocemail` IS NULL;
-UPDATE `ixpmanager`.`cust`
-SET `cust`.`peeringemail` =''
-WHERE `cust`.`peeringemail` IS NULL;
+/* IXP to Salesforce tie id */
+UPDATE `ixpmanager`.`company_registration_detail`
+JOIN `ixpmanager`.`cust`
+ON `cust`.`company_registered_detail_id` = `company_registration_detail`.`id`
+JOIN `ixpmanager`.`pdb_networks`
+ON `pdb_networks`.`asn` = `cust`.`autsys`
+SET `company_registration_detail`.`registeredName` = `pdb_networks`.`legal_name`
+WHERE `pdb_networks`.`asn` = `cust`.`autsys`;
 /*  Push changes to vlaninterface
 */
 UPDATE `ixpmanager`.`vlaninterface`
