@@ -156,6 +156,13 @@ ON  `virtualinterface`.`id` =`vlaninterface`.`virtualinterfaceid`
 JOIN  `ixpmanager`.`cust`
 ON `cust`.`id` = `virtualinterface`.`custid`
 SET `vlaninterface`.`maxbgpprefix` = `cust`.`maxprefixes`
+WHERE `vlaninterface`.`maxbgpprefix`IS NUll;
+UPDATE `ixpmanager`.`vlaninterface`
+JOIN `ixpmanager`.`virtualinterface`
+ON  `virtualinterface`.`id` =`vlaninterface`.`virtualinterfaceid`
+JOIN  `ixpmanager`.`cust`
+ON `cust`.`id` = `virtualinterface`.`custid`
+SET `vlaninterface`.`maxbgpprefix` = `cust`.`maxprefixes`
 WHERE `cust`.`maxprefixes` >`vlaninterface`.`maxbgpprefix`;
 /*   ALL DONE  */
 SET SQL_SAFE_UPDATES = 1;
