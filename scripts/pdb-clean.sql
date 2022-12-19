@@ -58,4 +58,7 @@ UPDATE `peeringdb`.`peeringdb_facility`
 SET `city` = replace(`city`,'\"','');
 UPDATE `peeringdb`.`peeringdb_facility`
 SET `notes` = replace(`notes`,'\"','');
+/*Export for IXP Manger*/
+
+/* All Done*/
 SET SQL_SAFE_UPDATES = 1;
