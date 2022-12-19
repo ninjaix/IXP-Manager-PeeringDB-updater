@@ -59,4 +59,3 @@ SET `city` = replace(`city`,'\"','');
 UPDATE `peeringdb`.`peeringdb_facility`
 SET `notes` = replace(`notes`,'\"','');
 SET SQL_SAFE_UPDATES = 1;
-SELECT * FROM peeringdb.peeringdb_organization;
