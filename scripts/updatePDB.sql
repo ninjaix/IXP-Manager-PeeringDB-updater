@@ -1,3 +1,4 @@
+/* Updated as of 2022-12-18 */
 SET SQL_SAFE_UPDATES = 0;
 UPDATE `peeringdb`.`peeringdb_organization`
 SET `address2` = LTRIM(`address2`)
@@ -28,6 +29,8 @@ SET `notes` = replace(`notes`,'\"','');
 UPDATE `peeringdb`.`peeringdb_network`
 SET `aka` = replace(`aka`,'\"','');
 UPDATE `peeringdb`.`peeringdb_network`
+SET `name` = replace(`name`,'\\','');
+UPDATE `peeringdb`.`peeringdb_network`
 SET `name` = replace(`name`,'\"','');
 UPDATE `peeringdb`.`peeringdb_network`
 SET `name_long` = replace(`name_long`,'\"','');
@@ -56,3 +59,4 @@ SET `city` = replace(`city`,'\"','');
 UPDATE `peeringdb`.`peeringdb_facility`
 SET `notes` = replace(`notes`,'\"','');
 SET SQL_SAFE_UPDATES = 1;
+SELECT * FROM peeringdb.peeringdb_organization;
