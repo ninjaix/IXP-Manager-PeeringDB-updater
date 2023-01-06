@@ -1,4 +1,4 @@
-Reference schemas for:
+Reference schemas for the transfer between PeeringDB and IXP Manager and manipulation withing IXP Manager:
 - ixpmanager.cust
 - ixpmanager.company_registration_data
 - ixmmanager.vlaninterface  
@@ -7,3 +7,6 @@ Reference schemas for:
 
 - peeringdb.peeringdb_organization
 - peeringdb.peeringdb_network
+
+Reference of the other schemas in PeeringDB that are just sanitized:
+- peeringdb.peeringdb_facility
