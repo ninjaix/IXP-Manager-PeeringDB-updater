@@ -4,7 +4,7 @@
 
 ## Reduce our workload due to 2 very common issues
 - Update max prefixes allowed
-- Update as-sets since we have another script that updated our ARIN Registry
+- Update as-sets since we have another script that updates our ARIN IRR Sets
 ## And some minor admin items
 - Update the network names
 - Update the corporate website
