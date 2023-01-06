@@ -3,21 +3,21 @@
 - Very down and dirty via CSV files and Scripts
 
 ## Reduce our workload due to 2 very common issues
-- update max prefixes allowed
-- update as-sets since we have another script that updated our ARIN Registry
+- Update max prefixes allowed
+- Update as-sets since we have another script that updated our ARIN Registry
 ## And some minor admin items
-- update Network Names
-- update the corporate website
+- Update the network names
+- Update the corporate website
 ## And prepare to add 'Never via Route Server' to our features
-- we are currently doing this but want to loop in INEX / IXP-Manager
+We are currently doing this but want to loop in INEX / IXP-Manager
 
 # Warnings
  - We have made assumptions based on our own use.   Feel free to make modifications based on your own desires.
- - PeeringDB dataset isn't very clean so be aware
+ - PeeringDB dataset isn't very clean so be aware if what you are changing
 
 # Overview
 - We use a seperate MySQL server for our IXP-Manager installation
-- We have installed peeringdb.py on the MySQL server in their own database.  We also use this to update our CRM and other tools
+- We have installed peeringdb.py on the same MySQL server in their own database.  We also use this to update our CRM and other tools,
 - We have added a table called pdb_networks to IXP-Manager.   This is not supported by IXP-Manager
 - We run three scripts after doing an hourly sync on PeeringDB.  By using the peeringdb.py module it only does a few api calls and only requests updated data.
 ## Our Production Scripts
