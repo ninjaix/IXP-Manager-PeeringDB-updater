@@ -37,7 +37,7 @@ Set Maximum Prexies
 We make an attempt to cleanup the IRR value from PEERING DB
 - Set everything to upper case
 - Make sure it starts with AS (ARIN only allows use to use AS-Sets and AUTNUM - no RS is allowed)
-- If it looks like there are two values the first is assumed to be IPv4 then the second is IPv6
+- If it looks like there are two values the first is assumed to be IPv4 AS-Set then the second is IPv6 Set (an Example of where this is wrong is Flexential)
 - Remove anything before a :: and a mainstream IRR Provider Name
 #### We then push the updates out
 ##### Join the cust table based on the ASN
@@ -50,8 +50,9 @@ We make an attempt to cleanup the IRR value from PEERING DB
 ##### In the vlaninterface update the maxbgpprefixes if it is NULL or larger than the current value
 
 # Suggestions
-- Have IXP-Manager add a flag field do dissalow updates for any potential corner cases ( we already allow max prefix overrive on the port)
-- Have IXP-Mnanger add a flag field showing if the network has selected "Never-Via-A-Route-Server" in PeeringDB
+- ASk IXP-Manager to add an editable flag field to dissalow updates for any potential corner cases (we already allow max prefix overrive on the port)
+- Ask IXP-Mnanger to add a flag field showing if the network has selected "Never-Via-A-Route-Server" in PeeringDB
+- Ask IXP-Manager to seperate maxbgpprefixes for both IPv4 and IPv6
 
 
 # That's it for now
