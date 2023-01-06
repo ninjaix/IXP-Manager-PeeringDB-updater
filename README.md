@@ -29,9 +29,11 @@
 - assume to the writing location is limited to that of a standard MySQL installation
 - includes flag for 'Never-via-Route-Server'
 ### load-ixmp-pdb.sql
-- we created a new table but we truncated it before update
-####- we apply our own internal rules and modify the data before proceding
--For maximum prefixes we set it to 150% of the PeeringDB value with a minimum of 100
+- We created a new table but we truncated it before update
+#### We apply our own internal rules and modify the data before proceding
+Set Maximum Prexies 
+- 150% of the PeeringDB value 
+- Minimum of 100
 We make an attempt to cleanup the IRR value from PEERING DB
 - Set everything to upper case
 - Make sure it starts with AS (ARIN only allows use to use AS-Sets and AUTNUM - no RS is allowed)
@@ -48,8 +50,8 @@ We make an attempt to cleanup the IRR value from PEERING DB
 ##### In the vlaninterface update the maxbgpprefixes if it is NULL or larger than the current value
 
 # Suggestions
-- have IXP-Manager add a flag field do dissalow updates for any potential corner cases
-- ahve IXP-Mnanger add a flag field showing if the network has selected "Never-Via-A-Route-Server" in PeeringDB
+- Have IXP-Manager add a flag field do dissalow updates for any potential corner cases ( we already allow max prefix overrive on the port)
+- Have IXP-Mnanger add a flag field showing if the network has selected "Never-Via-A-Route-Server" in PeeringDB
 
 
 # That's it for now
