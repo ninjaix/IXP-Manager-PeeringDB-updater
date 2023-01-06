@@ -1,0 +1,5 @@
+mv /var/lib/mysql-files/ixpm-pdb-network.csv /var/lib/mysql-files/ixpm-pdb-network.csv.old
+/root/peeringdb-py/pdbvenv/bin/peeringdb sync 
+mysql -u username -pUBERPASSWORD < /usr/local/etc/pdb-clean.sql 
+mysql -u username -pUBERPASSWORD < /usr/local/etc/pdb-export.sql 
+mysql -u username -pUBERPASSWORD < /usr/local/etc/load-ixpm-pdb.sql
