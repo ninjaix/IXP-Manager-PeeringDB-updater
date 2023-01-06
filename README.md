@@ -2,13 +2,13 @@
 - Updating certain IXP-Manager fields from PeeringDB with a self hosted replica.
 - Very down and dirty via CSV files and Scripts
 
-## Reduce our workload due to 2 very common issues
+## Reduces our workload due to 2 very common issues
 - Update max prefixes allowed
 - Update as-sets since we have another script that updates our ARIN IRR Sets
 ## And some minor admin items
 - Update the network names
 - Update the corporate website
-## And prepare to add 'Never via Route Server' to our features
+## And prepare to add "Never via Route Server" to our features
 We are currently doing this but want to loop in INEX / IXP-Manager
 
 # Warnings
