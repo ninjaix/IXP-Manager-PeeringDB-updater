@@ -14,6 +14,7 @@ We are currently doing this but want to loop in INEX / IXP-Manager
 # Warnings
  - We have made assumptions based on our own use.   Feel free to make modifications based on your own desires.
  - PeeringDB dataset isn't very clean so be aware if what you are changing
+ - We have added a table in IXP-Manager that is not supported by INEX / IXP-Manager
 
 # Overview
 - We use a seperate MySQL server for our IXP-Manager installation
