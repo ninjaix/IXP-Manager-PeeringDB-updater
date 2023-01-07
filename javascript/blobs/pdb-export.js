@@ -25,9 +25,7 @@ mysqlcon.connect((err) => {
 });
 
 // PDB ORG
-mysqlcon.query("SELECT `asn`,`peeringdb_network`.`name`,`info_never_via_route_servers`,`irr_as_set`,`info_prefixes4`,`info_prefixes6`, `peeringdb_network`.`status`,`peeringdb_network`.`updated` ,`peeringdb_net
-work`.`website`,`peeringdb_network`.`version`,`rir_status`,`policy_ratio`,`peeringdb_organization`.`name` AS legalname FROM `peeringdb`.`peeringdb_network` JOIN `peeringdb`.`peeringdb_organization` ON `peering
-db_organization`.`id` = `peeringdb_network`.`org_id` ORDER BY `asn`", function (err, data, fields) {
+mysqlcon.query("SELECT `asn`,`peeringdb_network`.`name`,`info_never_via_route_servers`,`irr_as_set`,`info_prefixes4`,`info_prefixes6`, `peeringdb_network`.`status`,`peeringdb_network`.`updated` ,`peeringdb_network`.`website`,`peeringdb_network`.`version`,`rir_status`,`policy_ratio`,`peeringdb_organization`.`name` AS legalname FROM `peeringdb`.`peeringdb_network` JOIN `peeringdb`.`peeringdb_organization` ON `peeringdb_organization`.`id` = `peeringdb_network`.`org_id` ORDER BY `asn`", function (err, data, fields) {
     // if any error while executing above query, throw error
     if (err) throw err;
     // if there is no error, you have the result
