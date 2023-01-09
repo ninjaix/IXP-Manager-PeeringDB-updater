@@ -1,3 +1,6 @@
+/* used to load data into the pdb_networks table
+   update Jan 08 2023 for clarity
+*/
 USE ixpmanager;
 SET SQL_SAFE_UPDATES = 0;
 /* work the new table*/
@@ -29,13 +32,13 @@ update pdb_networks
 set info_prefixes6 = 100
 where info_prefixes6 < 99;
 /*  Fix up IRR
-*/
+    these fielsds should be empty*/
 UPDATE ixpmanager.pdb_networks
-SET `pdb_networks`.`irr` = NULL
-WHERE `pdb_networks`.`irr` < "A";
+SET `pdb_networks`.`irr` = NULL;
+/*  */
 UPDATE ixpmanager.pdb_networks
-SET  `pdb_networks`.`ipv6-as-set` = NULL
-WHERE `pdb_networks`.`ipv6-as-set`<'zzzzz';
+SET  `pdb_networks`.`ipv6-as-set` = NULL;
+/* */
 UPDATE ixpmanager.pdb_networks
 SET  `pdb_networks`.`as-set` = NULL
 WHERE `pdb_networks`.`as-set` ='';
@@ -121,30 +124,31 @@ WHERE `pdb_networks`.`ipv4-as-set` ='';
 UPDATE ixpmanager.pdb_networks
 SET `pdb_networks`.`ipv6-as-set` =  NULL
 WHERE `pdb_networks`.`ipv6-as-set` ='';
-/*   Push changes to customer (cust table)
-*/
+/*  Update AS-SETS */
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `peeringmacro` = `pdb_networks`.`ipv4-as-set`
 WHERE `pdb_networks`.`ipv4-as-set` IS NOT NULL;
+/* imputed IPv6 AS-Set */
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `peeringmacrov6` = `pdb_networks`.`ipv6-as-set`
 WHERE `pdb_networks`.`ipv6-as-set` IS NOT NULL;
-/*  for regulr disstro
+/*  for the name in the drop down */
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `pdb_networks`.`name` = `pdb_networks`.`name`;
-*/
+/* Push prefix values to customer (cust table)
+     It can be over ridden on the port (vlan infterface)  */
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `maxprefixes` = `pdb_networks`.`info_prefixes4`
 WHERE `pdb_networks`.`info_prefixes4` IS NOT NULL and `maxprefixes` < `pdb_networks`.`info_prefixes4`;
-/* IXP to Salesforce tie id */
+/* Put the Corporate name into IXP to link to Salesforce */
 UPDATE `ixpmanager`.`company_registration_detail`
 JOIN `ixpmanager`.`cust`
 ON `cust`.`company_registered_detail_id` = `company_registration_detail`.`id`
@@ -153,7 +157,7 @@ ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `company_registration_detail`.`registeredName` = `pdb_networks`.`legal_name`
 WHERE `pdb_networks`.`asn` = `cust`.`autsys`;
 /*  Push changes to vlaninterface
-*/
+    Update if NULL */
 UPDATE `ixpmanager`.`vlaninterface`
 JOIN `ixpmanager`.`virtualinterface`
 ON  `virtualinterface`.`id` =`vlaninterface`.`virtualinterfaceid`
@@ -161,6 +165,7 @@ JOIN  `ixpmanager`.`cust`
 ON `cust`.`id` = `virtualinterface`.`custid`
 SET `vlaninterface`.`maxbgpprefix` = `cust`.`maxprefixes`
 WHERE `vlaninterface`.`maxbgpprefix`IS NUll;
+/* Update is more than the entered value */
 UPDATE `ixpmanager`.`vlaninterface`
 JOIN `ixpmanager`.`virtualinterface`
 ON  `virtualinterface`.`id` =`vlaninterface`.`virtualinterfaceid`
