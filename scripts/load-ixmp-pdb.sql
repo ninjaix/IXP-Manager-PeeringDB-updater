@@ -141,6 +141,11 @@ UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `cust`.`name` = `pdb_networks`.`name`;
+/*  ABBRIVIEATED NAME   */
+UPDATE `ixpmanager`.`cust`
+JOIN`ixpmanager`.`pdb_networks`
+ON `pdb_networks`.`asn` = `cust`.`autsys`
+SET `cust`.`abbreviatedName` = SUBSTRING(`pdb_networks`.`name`,1,30);
 /* update website  */
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
