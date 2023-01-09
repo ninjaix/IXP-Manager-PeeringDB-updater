@@ -140,7 +140,13 @@ WHERE `pdb_networks`.`ipv6-as-set` IS NOT NULL;
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
-SET `pdb_networks`.`name` = `pdb_networks`.`name`;
+SET `cust`.`name` = `pdb_networks`.`name`;
+/* update website  */
+UPDATE `ixpmanager`.`cust`
+JOIN`ixpmanager`.`pdb_networks`
+ON `pdb_networks`.`asn` = `cust`.`autsys`
+SET `cust`.`corpwww` = `pdb_networks`.`corp_www`
+WHERE `pdb_networks`.`corp_www` IS NOT NULL;
 /* Push prefix values to customer (cust table)
      It can be over ridden on the port (vlan infterface)  */
 UPDATE `ixpmanager`.`cust`
