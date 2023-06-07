@@ -10,7 +10,7 @@
 - Update the corporate website
 ## And prepare to add "Never via Route Server" to our features
 We are currently doing this but want to loop in INEX / IXP-Manager
-We do this mannully in a foil right now
+We do this manually in a foil right now
 
 # Warnings
  - We have made assumptions based on our own use.   Feel free to make modifications based on your own desires.
