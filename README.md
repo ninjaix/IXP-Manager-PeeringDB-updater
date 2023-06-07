@@ -53,8 +53,11 @@ We make an attempt to cleanup the IRR values from PeeringDB
 - this is how the account is listed in our CRM and a CRM account my have multiple Networks (IXP-Manager Accounts)
 ##### In the vlaninterface update the maxbgpprefixes if it is NULL or larger than the current value
 
+# Needed 
+- IXP-Manager to add a read only field database field for "Never-Via-A-Route-Server"
+ 
 # Suggestions
-- Ask IXP-Manager to add an editable flag field to dissalow updates for any potential corner cases (we already allow max prefix overrive on the port). We only have one such and that is due to their placing of more than two IRR Sets in their PeeringDB data.
+- Ask IXP-Manager to add an editable flag field(s) to dissalow updates for any potential corner cases (we already allow max prefix overrive on the port). We only have one such and that is due to their placing of more than two IRR Sets in their PeeringDB data.  One to overriding the AS-SET and another to not allow PeeringDB Updates 
 - Ask IXP-Manager to add a flag field showing if a Network has selected "Never-Via-A-Route-Server" in PeeringDB.
 - Ask IXP-Manager to seperate maxbgpprefixes for both IPv4 and IPv6. This matched data provided by PeeringDB.
 
