@@ -10,6 +10,7 @@
 - Update the corporate website
 ## And prepare to add "Never via Route Server" to our features
 We are currently doing this but want to loop in INEX / IXP-Manager
+We do this mannully in a foil right now
 
 # Warnings
  - We have made assumptions based on our own use.   Feel free to make modifications based on your own desires.
@@ -55,6 +56,7 @@ We make an attempt to cleanup the IRR values from PeeringDB
 
 # Needed 
 - IXP-Manager to add a read only field database field for "Never-Via-A-Route-Server"
+- add a foil and code to implement this to the Route Servers
  
 # Suggestions
 - Ask IXP-Manager to add an editable flag field(s) to dissalow updates for any potential corner cases (we already allow max prefix overrive on the port). We only have one such and that is due to their placing of more than two IRR Sets in their PeeringDB data.  One to overriding the AS-SET and another to not allow PeeringDB Updates 
