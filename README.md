@@ -65,3 +65,5 @@ We make an attempt to cleanup the IRR values from PeeringDB
 
 
 # That's it for now
+
+- updated 23-07-01 - No longer change the IRR Value.  This causes issues with BGPQ3 not seeing onjects in a RIRs when only one is selected.  PeeringDB only al;ows one RIR.
