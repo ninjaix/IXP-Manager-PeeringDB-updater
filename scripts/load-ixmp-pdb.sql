@@ -153,7 +153,7 @@ ON `pdb_networks`.`asn` = `cust`.`autsys`
 SET `cust`.`corpwww` = `pdb_networks`.`corp_www`
 WHERE `pdb_networks`.`corp_www` IS NOT NULL;
 /* Push prefix values to customer (cust table)
-     It can be over ridden on the port (vlan infterface)  */
+     It can be over-ridden on the port (vlan infterface) by putting a larger value in the vlan interface  */
 UPDATE `ixpmanager`.`cust`
 JOIN`ixpmanager`.`pdb_networks`
 ON `pdb_networks`.`asn` = `cust`.`autsys`
